@@ -12,10 +12,12 @@ contract BEORefundableCrowdsaleFactory is Factory {
       ERC20 _token,
       uint256 _goal)
         public
-        returns (address crowdsale)
+        returns (address crowdsaleAddress)
     {
-        crowdsale = new BEORefundableCrowdsale(_openingTime, _closingTime, _rate, _wallet, _cap, _token, _goal);
-        register(crowdsale);
+        BEORefundableCrowdsale crowdsale = new BEORefundableCrowdsale(_openingTime, _closingTime, _rate, _wallet, _cap, _token, _goal);
+        crowdsale.transferOwnership(msg.sender);
+        crowdsaleAddress = address(crowdsale);
+        register(crowdsaleAddress);
     }
 
 }

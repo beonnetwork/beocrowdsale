@@ -9,10 +9,12 @@ contract BEOCrowdsaleFactory is Factory {
       uint256 _cap,
       ERC20 _token)
         public
-        returns (address crowdsale)
+        returns (address crowdsaleAddress)
     {
-        crowdsale = new BEOCrowdsale(_rate, _wallet, _cap, _token);
-        register(crowdsale);
+        BEOCrowdsale crowdsale = new BEOCrowdsale(_rate, _wallet, _cap, _token);
+        crowdsale.transferOwnership(msg.sender);
+        crowdsaleAddress = address(crowdsale);
+        register(crowdsaleAddress);
     }
 
 }
