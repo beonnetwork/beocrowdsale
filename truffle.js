@@ -13,7 +13,7 @@ module.exports = {
         },
         `https://mainnet.infura.io/${process.env.INFURA_APIKEY}`
       ),
-      network_id: 3,
+      network_id: 1,
       gas: 4700000,
     },
     ropsten: {
